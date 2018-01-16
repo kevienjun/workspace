@@ -1,0 +1,9 @@
+package edu.fju.exam;
+
+public class Director extends Manager {
+	public Director(int amount){
+		super(amount);
+		super.discount = 0.1f;
+	}
+
+}

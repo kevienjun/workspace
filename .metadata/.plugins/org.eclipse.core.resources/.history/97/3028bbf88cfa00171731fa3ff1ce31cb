@@ -1,0 +1,11 @@
+package edu.fju.exam;
+
+public class Employee {
+
+	int amount;
+	public Employee(int amount){
+		this.amount = amount;
+	}
+	}
+
+

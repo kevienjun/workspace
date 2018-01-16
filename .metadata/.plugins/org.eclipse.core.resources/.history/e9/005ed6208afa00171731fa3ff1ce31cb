@@ -1,0 +1,80 @@
+package edu.fju.exam;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class VendingMachine {
+	String drink[][]={{"烏龍茶","15"},{"綠茶","10"},{"青茶","15"}}; 
+	int money= 0; 
+	VendingMachine(){ 
+	money=0; 
+	} 
+	void pay(int m){ 
+	money=m; 
+	System.out.println("投入金額為："+money); 
+	} 
+	void tochoose(){ 
+	int dk; 
+	while(true){ 
+	System.out.print("請輸入要買的飲料：(輸入9結束)"); 
+	while(true){ 
+	try{ 
+	dk = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine()); 
+	break; 
+	}catch(Exception e){System.out.println("輸入錯誤");} 
+	} 
+	if(dk>0&&dk<=3){ 
+	int td=dk-1; 
+	System.out.println("你選擇的是"+drink[td][0]+"，金額為"+drink[td][1]); 
+	if(money>=Integer.parseInt(drink[td][1])){ 
+	money-=Integer.parseInt(drink[td][1]); 
+	System.out.println("已買了"+drink[td][0]+"，金額為"+drink[td][1]); 
+	} 
+	else 
+	System.out.println("金額不足!!!"); 
+	} 
+	else if(dk==9) 
+	break; 
+	else 
+	System.out.println("輸入錯誤"); 
+	show(); 
+	} 
+	} 
+	void givechange(){ 
+	System.out.println("找回"+money+"元"); 
+	money=0; 
+	} 
+	void show(){ 
+	System.out.println("\n 飲料 \t\t檟格"); 
+	for(int i=0;i<3;i++){ 
+	System.out.print((i+1)+". "); 
+	for(int j=0;j<2;j++){ 
+	System.out.print(drink[i][j]+" \t\t"); 
+	} 
+	System.out.println(); 
+	} 
+	System.out.println("目前金額:"+money); 
+	} 
+	public static void main(String args[]){ 
+		VendingMachine c = new VendingMachine(); 
+	int money; 
+	System.out.println("請輸入金額："); 
+	while(true){ 
+	try{ 
+	money = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine()); 
+	if(money>0) 
+	break; 
+	else 
+	System.out.println("請輸入大於0的數!!"); 
+	}catch(Exception e){System.out.println("輸入錯誤");} 
+	} 
+	c.pay(money); 
+	c.show(); 
+	c.tochoose(); 
+	c.givechange(); 
+	} 
+	}
+        
+
+	
+
